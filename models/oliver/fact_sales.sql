@@ -8,10 +8,14 @@ SELECT
     d.date_key,
     e.employee_key,
     p.product_key,
-    s.store_key
-FROM {{ source('oliver_landing'), ('orderline')}} ol
-INNER JOIN {{ source('insurance_landing', 'policies') }} pd ON c.PolicyID = pd.PolicyID
-INNER JOIN {{ ref('dim_policy') }} p ON pd.PolicyID = p.policyid 
-INNER JOIN {{ ref('dim_customer') }} cu ON pd.CustomerID = cu.customerid 
-INNER JOIN {{ ref('dim_agent') }} a ON pd.AgentID = a.agentid 
-INNER JOIN {{ ref('dim_date') }} d ON d.date_day = c.ClaimDate
+    s.store_key,
+    ol.quantity,
+    ol.quantity * ol.unit_price AS dollars_sold,
+    ol.unit_price
+FROM {{ source('oliver_landing', 'orderline')}} ol
+INNER JOIN {{ source('oliver_landing', 'orders')}} o ON ol.order_id = o.order_id
+INNER JOIN {{ ref('oliver_dim_customer') }} c ON o.customer_id = c.customer_id
+INNER JOIN {{ ref('oliver_dim_employee') }} e ON o.employee_id = e.employee_id 
+INNER JOIN {{ ref('oliver_dim_product') }} p ON ol.product_id = p.product_id
+INNER JOIN {{ ref('oliver_dim_store') }} s ON o.store_id = s.store_id
+INNER JOIN {{ ref('oliver_dim_date') }} d ON o.order_date = d.date_day
