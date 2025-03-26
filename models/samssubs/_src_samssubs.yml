@@ -1,0 +1,6 @@
+sources:
+  - name: samssubs_landing
+    database: jarettrogers
+    schema: samssubs_source
+    tables:
+      - name: web_traffic_events
