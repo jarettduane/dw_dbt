@@ -1,0 +1,23 @@
+models:
+  - name: samssubs_dim_customer
+    description: "Samssubs Customer Dimension"
+  - name: samssubs_dim_date
+    description: "Samssubs Date Dimension"
+  - name: samssubs_dim_employee
+    description: "Samssubs Employee Dimension"
+  - name: samssubs_dim_product
+    description: "Samssubs Product Dimension"
+  - name: samssubs_dim_store
+    description: "Samssubs Store Dimension"
+  - name: samssubs_dim_ordermethod
+    description: "Samssubs OrderMethod Dimension"
+  - name: fact_orderline
+    description: "Samssubs OrderLine Fact"
+  - name: samssubs_dim_webpage
+    description: "Samssubs WebPage Dimension"
+  - name: samssubs_dim_trafficsource
+    description: "Samssubs TrafficSource Dimension"
+  - name: samssubs_dim_eventtype
+    description: "Samssubs EventType Dimension"
+  - name: fact_webtraffic
+    description: "Samssubs WebTraffic Fact"
