@@ -10,6 +10,5 @@ select
 EmployeeID,
 EmployeeFName,
 EmployeeLName,
-EmployeeBDay,
-StoreID
+EmployeeBDay
 FROM {{ source('samssubs_sams_subs_landing', 'employee') }}
